@@ -1,0 +1,365 @@
+{
+  "name": "Bambinos | Payment Events + CRM Hygiene Sweep",
+  "nodes": [
+    {
+      "id": "0fca1c54-9a0a-51c4-94c9-915b10a1fda6",
+      "name": "Webhook: Razorpay / Stripe Event",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        200
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "payment-event",
+        "options": {}
+      }
+    },
+    {
+      "id": "b7a925a7-34c2-5b63-9cd6-ede12c5f67fe",
+      "name": "Normalise Payment Event",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const b = $json.body;\nconst status = b.event === 'payment.captured' || b.type === 'checkout.session.completed' ? 'Paid' : (b.event === 'payment.failed' || b.type === 'payment_intent.payment_failed') ? 'Payment_Failed' : 'Other';\nreturn [{json: {lead_id: b.payload?.notes?.lead_id || b.data?.object?.metadata?.lead_id, status, reason: b.payload?.payment?.entity?.error_reason || b.data?.object?.last_payment_error?.code || null, amount: b.payload?.payment?.entity?.amount || b.data?.object?.amount}}];"
+      }
+    },
+    {
+      "id": "f569a1b0-e8e1-59d6-88c5-ae6e33594c7c",
+      "name": "Switch: Paid / Failed",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        440,
+        200
+      ],
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.status}}",
+                    "rightValue": "Paid",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "paid"
+            },
+            {
+              "conditions": {
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.status}}",
+                    "rightValue": "Payment_Failed",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "failed"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "44e3b0b4-026f-5127-b46e-dbc9d681fd77",
+      "name": "CRM: Enrolled_Paid + Cancel Sales Cadence",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        680,
+        80
+      ],
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{$env.CRM_SHEET_ID}}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "ai_cleaned_crm"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "value": {
+            "lead_id": "={{$json.lead_id}}",
+            "ai_crm_stage": "Enrolled_Paid",
+            "sales_cadence_active": "FALSE"
+          }
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "1",
+          "name": "Bambinos Sheets"
+        }
+      }
+    },
+    {
+      "id": "b3f579d0-d635-513f-80f9-5dd01d80a153",
+      "name": "WhatsApp: Onboarding Welcome (T0)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        80
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{$env.WA_PHONE_ID}}/messages",
+        "options": {}
+      }
+    },
+    {
+      "id": "e8b2ab50-4022-5edc-ad1f-d12b62e6badd",
+      "name": "Ops: Verify Batch Mapping",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        80
+      ],
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "#ops-onboarding"
+        },
+        "text": "=\u2705 {{$json.lead_id}} paid. Confirm the enrollment is mapped to the batch agreed on the call (see ai_cleaned_crm.schedule_agreed), not the portal default."
+      },
+      "credentials": {
+        "slackApi": {
+          "id": "2",
+          "name": "Bambinos Slack"
+        }
+      }
+    },
+    {
+      "id": "717c27be-d048-5521-ab8c-57fa7a5f314b",
+      "name": "Trigger Payment-Recovery Touch (T0)",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        680,
+        320
+      ],
+      "parameters": {
+        "source": "database",
+        "workflowId": "={{$env.FOLLOWUP_WORKFLOW_ID}}",
+        "options": {}
+      }
+    },
+    {
+      "id": "045b229c-2b01-5a24-876a-276b5afe8517",
+      "name": "Cron: Every 30 min",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        600
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c7969a7b-e29a-59b9-88c0-d896fc4fa3d2",
+      "name": "Sheets: Leads + Demos",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        600
+      ],
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{$env.CRM_SHEET_ID}}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "1_crm_leads"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "1",
+          "name": "Bambinos Sheets"
+        }
+      }
+    },
+    {
+      "id": "dd8fcfc1-d5b4-5d04-822b-4535552d7727",
+      "name": "Hygiene Rules (SLA, duplicates, stale follow-ups)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        600
+      ],
+      "parameters": {
+        "jsCode": "const now = new Date();\nconst rows = $input.all().map(i => i.json);\nconst alerts = []; const seen = {};\nfor (const r of rows.sort((a,b) => a.created_at.localeCompare(b.created_at))) {\n  for (const k of ['student_id','mobile']) { const key = k+':'+r[k]; if (seen[key] && seen[key] !== r.lead_code) alerts.push({lead: r.lead_code, code: 'DUPLICATE_LEAD', of: seen[key]}); seen[key] = seen[key] || r.lead_code; }\n  if (r.crm_lead_stage === 'Demo_Completed_Uncalled' && r.demo_completed_at && (now - new Date(r.demo_completed_at))/36e5 > 2) alerts.push({lead: r.lead_code, code: 'UNCALLED_SLA_BREACH', owner: r.assigned_counsellor_name});\n  if (r.last_call_at && r.last_call_at !== 'NULL' && (r.next_followup_at === 'NULL' || r.next_followup_at < r.last_call_at)) alerts.push({lead: r.lead_code, code: 'FOLLOWUP_DATE_INVALID'});\n}\nreturn alerts.map(a => ({json: a}));"
+      }
+    },
+    {
+      "id": "de6ff07b-3621-5797-bcdd-83fc1af600a2",
+      "name": "Slack: P1 Alerts to Rep + Team Lead",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        600
+      ],
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "#sales-p1-alerts"
+        },
+        "text": "=\u23f1\ufe0f {{$json.code}}: {{$json.lead}} {{$json.owner ? '(' + $json.owner + ')' : ''}} {{$json.of ? 'duplicate of ' + $json.of : ''}}"
+      },
+      "credentials": {
+        "slackApi": {
+          "id": "2",
+          "name": "Bambinos Slack"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook: Razorpay / Stripe Event": {
+      "main": [
+        [
+          {
+            "node": "Normalise Payment Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalise Payment Event": {
+      "main": [
+        [
+          {
+            "node": "Switch: Paid / Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch: Paid / Failed": {
+      "main": [
+        [
+          {
+            "node": "CRM: Enrolled_Paid + Cancel Sales Cadence",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Trigger Payment-Recovery Touch (T0)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CRM: Enrolled_Paid + Cancel Sales Cadence": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: Onboarding Welcome (T0)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: Onboarding Welcome (T0)": {
+      "main": [
+        [
+          {
+            "node": "Ops: Verify Batch Mapping",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron: Every 30 min": {
+      "main": [
+        [
+          {
+            "node": "Sheets: Leads + Demos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sheets: Leads + Demos": {
+      "main": [
+        [
+          {
+            "node": "Hygiene Rules (SLA, duplicates, stale follow-ups)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hygiene Rules (SLA, duplicates, stale follow-ups)": {
+      "main": [
+        [
+          {
+            "node": "Slack: P1 Alerts to Rep + Team Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata"
+  },
+  "active": false
+}

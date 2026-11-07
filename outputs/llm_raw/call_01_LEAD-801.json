@@ -1,0 +1,66 @@
+{
+  "call_id": "7001",
+  "lead_id": "LEAD-801",
+  "language": "English",
+  "audit": {
+    "dimensions": [
+      {"id": "D1", "score": 4, "evidence": [{"ts": "00:08", "quote": "did you see that huge smile on his face at the end when he finished his space superhero story?"}], "rationale": "Opens with the exact demo magic moment from Ms. Rhea's evaluation; later cites 'asteroid'/'gravity' vocabulary from the strengths note."},
+      {"id": "D2", "score": 4, "evidence": [{"ts": "00:24", "quote": "he never raises his hand in class"}, {"ts": "00:46", "quote": "you actually spotted the exact gap"}], "rationale": "Parent voices the pain herself (PTM feedback, hides at family gatherings); rep validates and links it to the educator's observed gap (freezes on open questions)."},
+      {"id": "D3", "score": 4, "evidence": [{"ts": "01:55", "quote": "Strictly maximum 6 kids per batch, ma'am, all aged 7 to 9"}, {"ts": "02:32", "quote": "which is Rs. 12,000 total—that comes to Rs. 250 per live session"}], "rationale": "Pain → minute-18 proof → small-group format → Stage Showcase roadmap → price only when asked, framed per session with 14-day refund."},
+      {"id": "D4", "score": 4, "evidence": [{"ts": "03:18", "quote": "what is the #1 question he usually asks before saying yes to a program for Aarav?"}, {"ts": "03:48", "quote": "If I send you a crisp 60-second summary on WhatsApp"}], "rationale": "Isolates the spouse objection, uncovers the husband's real question, and arms the mother with forwardable proof."},
+      {"id": "D5", "score": 4, "evidence": [{"ts": "04:15", "quote": "Shall I give you a quick 2-minute call tomorrow at 11 AM?"}, {"ts": "04:30", "quote": "Yes, 11 AM tomorrow works."}], "rationale": "Specific, time-bound next step agreed by the parent; seat held until 11 AM."},
+      {"id": "D6", "score": 4, "evidence": [{"ts": "03:32", "quote": "He gets back from his office in Whitefield around 8:30 PM."}], "rationale": "Rep talk-time 46%; asks and listens; parent does most of the talking."},
+      {"id": "D7", "score": 3, "evidence": [{"ts": "02:32", "quote": "currently 5 kids are enrolled, so there is 1 seat left"}], "rationale": "Pricing and refund policy accurate. One scarcity claim must be verified against the live roster (LOW)."}
+    ],
+    "rubric_gaming_detected": false,
+    "gaming_evidence": []
+  },
+  "compliance_flags": [
+    {"code": "SCARCITY_CLAIM_UNVERIFIED", "severity": "LOW", "ts": "02:32", "quote": "currently 5 kids are enrolled, so there is 1 seat left", "policy_ref": "Roster verification", "why": "Seat-count claims must match the live batch roster; auto-verify via roster API."}
+  ],
+  "coaching": {
+    "strengths": [
+      {"ts": "00:08", "text": "Opened with the child's exact demo moment, not the product."},
+      {"ts": "03:18", "text": "'What is the #1 question your husband will ask?' turned a stall into a solvable task."},
+      {"ts": "02:32", "text": "Per-session price framing (Rs. 250/class) plus refund policy right after the value build."}
+    ],
+    "fixes": [
+      {"moment_ts": "04:15", "what_happened": "Spouse summary promised but the father has no direct touchpoint with the teacher.", "why_it_cost_us": "Absent decision-makers convert faster when they hear from the teacher, not second-hand.", "say_this_instead": "If it helps, I can also set up a 10-minute call for your husband with Ms. Rhea this weekend so he can ask her directly."}
+    ],
+    "micro_drill": "Share this call (with consent) as a team 'Call of the Week' example of turning a spouse objection into a forwardable summary."
+  },
+  "crm": {
+    "decision_maker": "Joint: mother + father; father handles credit-card payments and missed the demo",
+    "parent_stated_pain": {"ts": "00:24", "quote": "he never raises his hand in class"},
+    "child_demo_highlight": "At minute 18, using the 3-step 'Superhero Hook' template, Aarav unmuted and delivered a 45-second space rescue story with full hand gestures and a huge smile.",
+    "child_learning_gap": "Freezes for the first ~10 seconds when put on the spot (stage fear), not a vocabulary or grammar problem.",
+    "primary_objection": {"code": "SPOUSE_DECISION", "status": "open", "ts": "02:58", "quote": "my husband wasn't home during the Zoom demo today, and we always decide together"},
+    "secondary_objections": [],
+    "objection_root_cause": "Father needs proof this is a stage-fear program, not grammar tuition.",
+    "current_blocker": "Father's approval and card payment",
+    "schedule_agreed": "Tue-Thu 6:00-6:50 PM IST, Ms. Rhea's Grade 3 batch",
+    "price_quoted_by_rep": "INR 12,000 / 48 sessions",
+    "discount_offered": null,
+    "intent_signals": {
+      "parent_stated_pain": {"value": true, "ts": "00:24", "quote": "he never raises his hand in class"},
+      "fee_accepted": {"value": true, "ts": "02:58", "quote": "Rs. 12,000 for 6 months is quite reasonable"},
+      "price_objection_unresolved": {"value": false},
+      "schedule_confirmed": {"value": true, "ts": "02:58", "quote": "Tue-Thu 6 PM works well after his school bus drops him"},
+      "next_step_agreed_with_time": {"value": true, "ts": "04:30", "quote": "Yes, 11 AM tomorrow works."},
+      "explicit_commitment_to_pay": {"value": false},
+      "decision_maker_absent": {"value": true, "ts": "02:58", "quote": "my husband wasn't home during the Zoom demo today"},
+      "competitor_active": {"value": false},
+      "info_requested": {"value": false},
+      "conditional_yes_with_available_fix": {"value": false},
+      "explicit_buying_question": {"value": false},
+      "parent_visible_enthusiasm": {"value": false},
+      "dnc_or_hostile": {"value": false}
+    },
+    "next_best_action": {"nba_code": "SEND_SPOUSE_SUMMARY", "owner": "counsellor", "action": "Send forwardable 60-sec summary before 8:30 PM IST; 11 AM callback; offer father a 10-min call with Ms. Rhea."},
+    "clean_note": "Mother sold on fee (INR 12k) + Tue-Thu 6PM. Father (pays by card) missed demo; his question: 'grammar tuition or stage-fear fix?'. Spouse summary + link sent; seat held till 11AM; callback 11AM.",
+    "rep_disposition_accurate": {"value": false, "reason": "'Call back tomorrow' hides a Hot lead with a specific spouse objection and a held seat."}
+  },
+  "confidence": 0.93,
+  "needs_human_review": false,
+  "review_reasons": []
+}

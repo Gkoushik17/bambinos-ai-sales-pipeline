@@ -1,0 +1,72 @@
+{
+  "call_id": "7003",
+  "lead_id": "LEAD-803",
+  "language": "English",
+  "audit": {
+    "dimensions": [
+      {"id": "D1", "score": 0, "evidence": [], "rationale": "Opens with a fabricated 'Elite' shortlist and a company monologue; never mentions Vihaan's 'ai'/'ee' blending success."},
+      {"id": "D2", "score": 0, "evidence": [], "rationale": "Parent raised two specific concerns (screen time, 'train' vs 'truck'); rep dismissed both."},
+      {"id": "D3", "score": 0, "evidence": [], "rationale": "No demo-linked value; replaced with fake guarantees."},
+      {"id": "D4", "score": 0, "evidence": [], "rationale": "Objections answered with an off-policy refund, an unauthorized discount and a threat."},
+      {"id": "D5", "score": 0, "evidence": [], "rationale": "Coercive 5-minute deadline; parent terminates the call and asks not to be contacted."},
+      {"id": "D6", "score": 0, "evidence": [], "rationale": "84% rep talk-time with a 95-second opening monologue."},
+      {"id": "D7", "score": 0, "evidence": [], "rationale": "Six CRITICAL violations."}
+    ],
+    "rubric_gaming_detected": false,
+    "gaming_evidence": []
+  },
+  "compliance_flags": [
+    {"code": "FAKE_OUTCOME_GUARANTEE", "severity": "CRITICAL", "ts": "02:08", "quote": "he will come Rank 1 in his school English exam! 100% guaranteed in writing by me!", "policy_ref": "Class 101: NEVER promise specific school exam ranks (e.g., Rank 1 in 30 days)", "why": "Promised Rank 1 and reading 300-page novels in 30 days for a Grade 2 child."},
+    {"code": "UNAUTHORIZED_REFUND_PROMISE", "severity": "CRITICAL", "ts": "02:54", "quote": "I am giving you a 100% no-questions-asked full refund anytime in 6 months!", "policy_ref": "Official: 100% refund within 14 days (up to 4 classes), pro-rata thereafter", "why": "Explicitly told the parent to ignore the website policy; promised a refund after all 48 classes."},
+    {"code": "OFF_RECORD_SIDE_DEAL", "severity": "CRITICAL", "ts": "02:54", "quote": "Sir, between you and me, off the record, don't look at the website policy", "policy_ref": "Code of conduct", "why": "Off-record commitments outside company policy."},
+    {"code": "DISCOUNT_ABOVE_CAP", "severity": "CRITICAL", "ts": "03:30", "quote": "Because I hacked my manager's VIP scholarship quota just for you, sir—flat Rs. 4,000 off!", "policy_ref": "Class 101: max 10% (Rs. 950) without Team Lead approval code", "why": "Rs. 4,000 off Rs. 9,500 = 42.1%, 4.2x the cap; order 99403 already flagged by gateway."},
+    {"code": "FALSE_PRODUCT_CLAIM", "severity": "CRITICAL", "ts": "03:30", "quote": "I will even make it a 1-on-1 private class for the price of a group batch!", "policy_ref": "NEVER claim batches are 1-on-1 when selling a 6-kid group plan", "why": "Promised a product that does not exist at this price."},
+    {"code": "THREAT_OR_COERCION", "severity": "CRITICAL", "ts": "03:30", "quote": "otherwise our system will permanently blacklist Vihaan's student ID forever!", "policy_ref": "NEVER threaten that a child will be blacklisted if payment is not made in 5 minutes", "why": "Coercive threat against a 7-year-old's account."},
+    {"code": "DNC_REQUEST", "severity": "CRITICAL", "ts": "03:54", "quote": "I am cutting the call right now. Do not call me again!", "policy_ref": "Consumer protection / DND", "why": "Parent explicitly withdrew consent for calls."},
+    {"code": "FALSE_EXCLUSIVITY", "severity": "MEDIUM", "ts": "00:06", "quote": "Vihaan has been shortlisted for our super-exclusive Elite Phonics Accelerator batch!", "policy_ref": "Catalog has no such batch", "why": "Fabricated exclusivity."},
+    {"code": "DISMISSIVE_OF_CHILD_WELLBEING", "severity": "HIGH", "ts": "02:08", "quote": "Sir, forget about screen time and forget about \"train\" or \"truck\"! That is nothing!", "policy_ref": "Code of conduct", "why": "Dismissed a legitimate screen-time concern for a 7-year-old."}
+  ],
+  "coaching": {
+    "strengths": [],
+    "fixes": [
+      {"moment_ts": "01:45", "what_happened": "Parent asked two precise questions (screen time; 'train' vs 'truck').", "why_it_cost_us": "These were buying questions. Answering them with Ms. Simran's notes would likely have closed the sale.", "say_this_instead": "Great catch. Ms. Simran noticed Vihaan looks at the first letter and guesses. By the end he blended six 'ai' and 'ee' words like 'train' and 'green' without guessing once, using the tap-and-slide technique. And these 50 minutes are active reading, not watching."}
+    ],
+    "micro_drill": "Mandatory: compliance re-certification and shadowing a Grade-A rep before returning to live calls (manager decision)."
+  },
+  "crm": {
+    "decision_maker": "Father (attended demo)",
+    "parent_stated_pain": {"ts": "01:45", "quote": "why was he reading the word \"train\" as \"truck\" at the start of the class?"},
+    "child_demo_highlight": "Blended six four-letter 'ai' and 'ee' words ('train', 'brain', 'green') using the tap-and-slide phonics technique without guessing once.",
+    "child_learning_gap": "Looks at the first letter and guesses the word (e.g., 'truck' for 'train'); needs digraph and vowel-team blending practice.",
+    "primary_objection": {"code": "TRUST_CREDIBILITY", "status": "open", "ts": "03:54", "quote": "you are talking like a scam call center!"},
+    "secondary_objections": [
+      {"code": "SCREEN_TIME", "status": "open", "ts": "01:45", "quote": "I'm worried about adding more screen time"}
+    ],
+    "objection_root_cause": "Rep conduct destroyed trust; underlying genuine concern was screen time. Parent liked the teacher.",
+    "current_blocker": "Rep misconduct; parent requested no further calls",
+    "schedule_agreed": null,
+    "price_quoted_by_rep": "INR 9,500 (link sent at INR 5,500)",
+    "discount_offered": {"amount": 4000, "currency": "INR"},
+    "intent_signals": {
+      "parent_stated_pain": {"value": true, "ts": "01:45", "quote": "why was he reading the word \"train\" as \"truck\" at the start of the class?"},
+      "fee_accepted": {"value": false},
+      "price_objection_unresolved": {"value": false},
+      "schedule_confirmed": {"value": false},
+      "next_step_agreed_with_time": {"value": false},
+      "explicit_commitment_to_pay": {"value": false},
+      "decision_maker_absent": {"value": false},
+      "competitor_active": {"value": false},
+      "info_requested": {"value": false},
+      "conditional_yes_with_available_fix": {"value": false},
+      "explicit_buying_question": {"value": false},
+      "parent_visible_enthusiasm": {"value": true, "ts": "03:54", "quote": "I really liked the teacher Ms. Simran in the demo"},
+      "dnc_or_hostile": {"value": true, "ts": "03:54", "quote": "Do not call me again!"}
+    },
+    "next_best_action": {"nba_code": "COMPLIANCE_HOLD", "owner": "sales_head", "action": "Freeze lead, void link 99403, no calls (DNC). Sales Head reviews within 2h; optional one-time written apology and correction, no sales ask."},
+    "clean_note": "COMPLIANCE HOLD. Rep made fake Rank-1 guarantee, off-policy 6-month refund, 42% unauthorized discount (link INR 5,500), false 1-on-1, blacklist threat. Parent asked DNC. Parent liked Ms. Simran; genuine concern was screen time.",
+    "rep_disposition_accurate": {"value": false, "reason": "Rep logged 'Interested / will pay today' (Hot); parent hung up and asked not to be called. Falsified disposition."}
+  },
+  "confidence": 0.97,
+  "needs_human_review": true,
+  "review_reasons": ["CRITICAL compliance flags", "DNC request", "CRM disposition falsified"]
+}

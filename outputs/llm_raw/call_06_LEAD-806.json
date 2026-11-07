@@ -1,0 +1,73 @@
+{
+  "call_id": "7006",
+  "lead_id": "LEAD-806",
+  "language": "English",
+  "audit": {
+    "dimensions": [
+      {"id": "D1", "score": 0, "evidence": [], "rationale": "Self-narrated praise ('I am praising the child now') that contradicts the evaluation (engagement 2/5, overwhelmed)."},
+      {"id": "D2", "score": 0, "evidence": [], "rationale": "Three discovery questions read back-to-back in 27 seconds with no pause; answers never used."},
+      {"id": "D3", "score": 0, "evidence": [], "rationale": "Pushes the standard 6-kid batch and price; ignores the coach's recommended Little Starters track."},
+      {"id": "D4", "score": 0, "evidence": [], "rationale": "Dismisses the mother's concern ('kids always make excuses') instead of offering the policy remedy."},
+      {"id": "D5", "score": 0, "evidence": [], "rationale": "Pressure close with a deadline; parent ends the call."},
+      {"id": "D6", "score": 1, "evidence": [{"ts": "01:32", "quote": "Are you even listening to me?!"}], "rationale": "74% rep talk-time; the parent explicitly says she isn't being heard."},
+      {"id": "D7", "score": 1, "evidence": [{"ts": "01:20", "quote": "Chess improves IQ, memory, concentration, and maths scores by 40%!"}], "rationale": "Discount within cap, but HIGH flags (remedy not offered, dismissive tone) and an unsubstantiated statistic."}
+    ],
+    "rubric_gaming_detected": true,
+    "gaming_evidence": [
+      {"ts": "00:05", "quote": "Let me quickly complete my mandatory call checklist"},
+      {"ts": "00:44", "quote": "Yes ma'am, I am praising the child now"},
+      {"ts": "01:58", "quote": "that covers my urgency trial close!"}
+    ]
+  },
+  "compliance_flags": [
+    {"code": "RUBRIC_GAMING", "severity": "HIGH", "ts": "00:05", "quote": "Let me quickly complete my mandatory call checklist", "policy_ref": "Audit integrity", "why": "Checklist keywords recited to inflate the AI score; no genuine discovery."},
+    {"code": "REQUIRED_REMEDY_NOT_OFFERED", "severity": "HIGH", "ts": "02:38", "quote": "Ma'am all batches are standard 6 kids, just pay Rs. 9,900 on the link and Ops team will see later.", "policy_ref": "Class 401: if a 5-6 year old felt overwhelmed in a mixed-age demo, offer a complimentary 1-on-1 bridge session or Age 5-6 Micro-Batch (max 3 kids)", "why": "Parent explicitly asked for the remedy; rep denied it exists."},
+    {"code": "DISMISSIVE_OF_CHILD_WELLBEING", "severity": "HIGH", "ts": "01:58", "quote": "Ma'am kids always make excuses! Once you pay Rs. 11,000 and force her to sit in the 6-kid batch for 3 weeks", "policy_ref": "Code of conduct", "why": "Told a mother to force an intimidated 6-year-old into a mismatched batch."},
+    {"code": "UNSUBSTANTIATED_CLAIM", "severity": "MEDIUM", "ts": "01:20", "quote": "Chess improves IQ, memory, concentration, and maths scores by 40%!", "policy_ref": "Marketing claims policy", "why": "Unsupported statistic."},
+    {"code": "FALSE_URGENCY", "severity": "HIGH", "ts": "01:58", "quote": "Rs. 9,900 if you pay before 6 PM today", "policy_ref": "Code of conduct", "why": "Deadline-based pressure while the parent's concern was unresolved."}
+  ],
+  "coaching": {
+    "strengths": [
+      {"ts": "00:05", "text": "Mentioned the official 14-day refund policy accurately."}
+    ],
+    "fixes": [
+      {"moment_ts": "00:05", "what_happened": "Read three discovery questions in one breath.", "why_it_cost_us": "The mother felt processed by a robot, and the AI scores unanswered questions as zero, so it gained nothing.", "say_this_instead": "Hi Swathi, I spoke with Coach Arvind. He said Ananya loved capturing the dragon's treasure with the Knight early on. How did she feel by the end of the class?"},
+      {"moment_ts": "02:18", "what_happened": "Parent asked for an age 5-6 micro-batch; rep said none exists.", "why_it_cost_us": "Policy offers exactly that remedy. Saying no lost a parent who was ready to pay.", "say_this_instead": "You're absolutely right. For 5-6 year olds we have the Little Starters micro-batch, max 3 kids, and a free 1-on-1 bridge session with Coach Arvind. Which would Ananya be more comfortable with?"}
+    ],
+    "micro_drill": "Team-lead 1:1 within 48h. Listen to call 01 (Rohan) and rewrite this call's first 60 seconds; read the catalog remedies for each course."
+  },
+  "crm": {
+    "decision_maker": "Mother",
+    "parent_stated_pain": {"ts": "01:32", "quote": "four older 8- and 9-year-old boys in the same Zoom room who kept shouting out the answers"},
+    "child_demo_highlight": "Smiled in the first 10 minutes when she captured the dragon's treasure chest with the Knight in the 1-on-1 warm-up puzzle.",
+    "child_learning_gap": "Absolute beginner; felt overwhelmed by older, faster kids in a mixed-age group.",
+    "primary_objection": {"code": "CHILD_NOT_INTERESTED", "status": "open", "ts": "01:32", "quote": "Amma, chess is too hard, I don't want to join."},
+    "secondary_objections": [],
+    "objection_root_cause": "Demo batch mismatch: 6-year-old placed with 8-9 year olds. Coach recommends Little Starters (Age 5-6) micro-batch or 1-on-1 bridge.",
+    "current_blocker": "Needs age 5-6 micro-batch or 1-on-1 bridge confirmed by academic team",
+    "schedule_agreed": null,
+    "price_quoted_by_rep": "INR 11,000 → INR 9,900 (10%)",
+    "discount_offered": {"amount": 1100, "currency": "INR"},
+    "intent_signals": {
+      "parent_stated_pain": {"value": true, "ts": "01:32", "quote": "She got intimidated, turned off her camera at minute 15"},
+      "fee_accepted": {"value": false},
+      "price_objection_unresolved": {"value": false},
+      "schedule_confirmed": {"value": false},
+      "next_step_agreed_with_time": {"value": false},
+      "explicit_commitment_to_pay": {"value": false},
+      "decision_maker_absent": {"value": false},
+      "competitor_active": {"value": false},
+      "info_requested": {"value": false},
+      "conditional_yes_with_available_fix": {"value": true, "ts": "02:46", "quote": "Until someone from your academic team confirms a batch strictly for 6-year-olds or lets her do a calm 1-on-1 starter session"},
+      "explicit_buying_question": {"value": false},
+      "parent_visible_enthusiasm": {"value": false},
+      "dnc_or_hostile": {"value": false}
+    },
+    "next_best_action": {"nba_code": "ACADEMIC_BATCH_FIX", "owner": "academic_team", "action": "Coach Arvind/academic counsellor offers a free 1-on-1 bridge or Little Starters micro-batch (max 3, age 5-6); reassign lead away from Karan."},
+    "clean_note": "NOT 'child not interested': demo batch mismatch (6yo with 8-9yo boys). Loved the Knight puzzle 1-on-1. Mother will pay if age 5-6 micro-batch or 1-on-1 bridge confirmed. Rep refused remedy; academic team to recover.",
+    "rep_disposition_accurate": {"value": false, "reason": "Logged 'Child not interested / Cold'; parent stated explicit conditions under which she would pay."}
+  },
+  "confidence": 0.92,
+  "needs_human_review": true,
+  "review_reasons": ["Rubric gaming detected", "HIGH flags"]
+}

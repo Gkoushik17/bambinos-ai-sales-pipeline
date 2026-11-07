@@ -1,0 +1,627 @@
+{
+  "_note": "Prompt 02 output. Names of LEAD-807..812 are masked in the dataset, so {{parent_first_name}} / {{child_first_name}} are filled from the unmasked CRM at send time. [Brackets] = system placeholders filled from batch calendar/payment APIs or the send is blocked.",
+  "sequences": [
+    {
+      "lead_id": "LEAD-801",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-02 18:05 IST",
+          "condition": "Immediately after call (rep promised summary before father returns 8:30 PM)",
+          "sender": "Rohan",
+          "content_tags": [
+            "recap",
+            "price",
+            "seat_hold",
+            "objection_answer"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Hi Divya, Rohan here 😊 As promised, a note you can forward to Aarav's dad:\n\n🎤 Today, at minute 18, Ms. Rhea gave Aarav a 3-step 'Superhero Hook'. He unmuted and told a 45-second space rescue story, with hand gestures and words like 'asteroid' and 'gravity'.\n\nSo it's not grammar tuition. His gap is freezing when put on the spot, and that's what we fix: max 6 kids, he speaks 4-5 times a class, and every 4th week is a Stage Showcase you can both watch live.\n\nRs. 12,000 for 48 classes (≈ Rs. 250/class), 100% refund within 14 days. Seat held till 11 AM tomorrow.",
+          "placeholders": []
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-03 13:00 IST",
+          "condition": "11 AM callback not connected AND unpaid",
+          "sender": "Rohan",
+          "content_tags": [
+            "objection_answer",
+            "new_concession"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Hi Divya, tried you at 11, no rush at all. Did Aarav's dad get a chance to see the note? If he has questions, Ms. Rhea can do a 10-minute call with him this week, so he hears it straight from the teacher. Want me to set that up?",
+          "placeholders": [
+            "Ms. Rhea availability from teacher calendar"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-05 18:30 IST",
+          "condition": "No reply AND unpaid",
+          "sender": "Rohan",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi Divya, one last note so I don't crowd your inbox. Aarav's 45-second space story is exactly where Ms. Rhea's batch starts from. Whenever you and his dad are ready, just reply here. If the timing isn't right, reply 'later' and I'll pause.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Payment webhook = Paid",
+        "Parent replies (hand to Rohan)",
+        "'later'/'stop' keyword",
+        "Duplicate LEAD-811 must not message"
+      ],
+      "internal_alerts": [
+        "Merge LEAD-811 (brochure re-download 2026-11-03 08:10) into LEAD-801. Treat as buying signal; Pooja must not contact."
+      ]
+    },
+    {
+      "lead_id": "LEAD-802",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-02 19:30 GST",
+          "condition": "After team-lead review of the call",
+          "sender": "Sneha",
+          "content_tags": [
+            "recap",
+            "objection_answer"
+          ],
+          "proposed_approval": "T2_TEAM_LEAD",
+          "message": "Hi Amina, Sneha here. You asked a fair question I didn't answer well: what exactly Mr. Vikram did with Zoya today.\n\nHe saw what you see: she's quick with straight sums, but on 4-line word problems she guesses + or × without breaking the sentence down. So he taught her the Bar-Model method: draw the story as bars first, then pick the operation. She then solved two Grade-6 British-curriculum fraction word puzzles on her own and said \"Oh, that was so easy!\"\n\nThat's the difference from worksheets. The curriculum outline you asked for is attached. Take all the time you need.",
+          "placeholders": [
+            "curriculum PDF attachment"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-04 17:30 GST",
+          "condition": "No reply AND unpaid",
+          "sender": "Sneha",
+          "content_tags": [
+            "objection_answer",
+            "new_concession"
+          ],
+          "proposed_approval": "T2_TEAM_LEAD",
+          "message": "Hi Amina, would it help to see it for yourself? Mr. Vikram can do a 15-minute screen-share with you and Zoya on one word problem from her own school paper, using bar models. Her tutor is welcome to watch too. Shall I find a slot?",
+          "placeholders": [
+            "Mr. Vikram slot from teacher calendar"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-07 17:30 GST",
+          "condition": "No reply AND unpaid",
+          "sender": "Sneha",
+          "content_tags": [
+            "price",
+            "installment"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Hi Amina, last note from me. Brainiac is AED 1,200 for 48 live classes (2 a week), payable 50% now and 50% at Day 30, with a 100% refund in the first 14 days, so you can judge it on Zoya's own word problems. Reply 'later' and I'll pause.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Payment webhook = Paid",
+        "Parent replies",
+        "'later'/'stop' keyword"
+      ],
+      "internal_alerts": [
+        "Do NOT resend the AED 100 / 30-minute link; void it.",
+        "Order 99402 standard_amount = 12000 AED (catalog AED 1,200), so fix the invoice record.",
+        "Set next_followup_at (currently NULL)."
+      ]
+    },
+    {
+      "lead_id": "LEAD-803",
+      "mode": "COMPLIANCE_HOLD",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-04 11:00 IST",
+          "condition": "ONLY if Sales Head approves after review; one-time; no sales ask",
+          "sender": "Sales Team Lead (manager voice)",
+          "content_tags": [
+            "apology"
+          ],
+          "proposed_approval": "T3_MANAGER",
+          "message": "Mr. Desai, this is [Team Lead name], Sales Team Lead at Bambinos.live. I'm sorry about yesterday's call. It's not how we work, and it is being reviewed.\n\nTo set the record straight: no one can promise ranks or a reading level in 30 days. Phonics blending takes steady practice. Our refund policy is 100% within the first 14 days (up to 4 classes), pro-rata after that. Our batches are small groups, not 1-on-1. Vihaan's ID is not blocked in any way, and the Rs. 5,500 link has been cancelled.\n\nWe won't call you. If you'd ever like to continue with Ms. Simran, just reply here.",
+          "placeholders": [
+            "Team Lead name"
+          ]
+        }
+      ],
+      "stop_triggers": [
+        "DNC on calls: permanent",
+        "Any automated sales message: blocked"
+      ],
+      "internal_alerts": [
+        "PAGE Sales Head: 6 CRITICAL flags on call 7003 (Amitabh R***).",
+        "Void Razorpay link 99403 (INR 5,500, 42% discount).",
+        "Correct CRM: rep logged 'Interested / will pay today' (falsified).",
+        "Pull Amitabh's other open leads (LEAD-808) for reassignment pending review."
+      ]
+    },
+    {
+      "lead_id": "LEAD-804",
+      "mode": "ONBOARDING",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-03 11:45 PST",
+          "condition": "Payment webhook = Paid (order 99404)",
+          "sender": "Bambinos Onboarding",
+          "content_tags": [
+            "onboarding"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi Neha, payment received, thank you! 🎉 Meera is confirmed in Acharya Aditi's Little Yogi batch, Saturdays & Sundays 9:30-10:20 AM PST. Her first class is on [first class date]. The Zoom link and digital storybooks arrive 24 hours before. Your invoice: BMB-NEW-2026-99404.",
+          "placeholders": [
+            "first class date from batch calendar"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "[day before first class] 18:00 PST",
+          "condition": "Day before first class",
+          "sender": "Bambinos Onboarding",
+          "content_tags": [
+            "onboarding"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi Neha, Meera's first Little Yogi class with Acharya Aditi is tomorrow at 9:30 AM PST. Here's the Zoom link: [link]. A notebook for her reflections is all she needs, just like the one she wrote the Samatvam verse in!",
+          "placeholders": [
+            "class date",
+            "Zoom link"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "[after week 2] 10:30 PST Sunday",
+          "condition": "After 4 classes attended",
+          "sender": "Rohan",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi Neha, two weeks in! How is Meera finding the weekend sessions? If friends in your Parent Club are curious, I'm happy to set their kids up with a demo too.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Sales cadence permanently blocked (Paid)"
+      ],
+      "internal_alerts": [
+        "Set CRM stage Payment_Link_Sent → Enrolled_Paid.",
+        "Ops: confirm enrollment is mapped to Sat-Sun 9:30 AM PST batch, NOT the portal default Tue/Thu 5 PM (clashes with gymnastics)."
+      ]
+    },
+    {
+      "lead_id": "LEAD-805",
+      "mode": "SALES_SEQUENCE",
+      "language": "Hinglish",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-03 20:50 IST",
+          "condition": "Event: Razorpay Payment_Failed (Bank_OTP_Timeout_On_UPI_Mandate)",
+          "sender": "Pooja",
+          "content_tags": [
+            "payment_retry"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Rajesh ji, Pooja here 🙏 Lagta hai bank ke OTP timeout ki wajah se UPI payment complete nahi hua. Yeh fresh link hai Installment 1 (Rs. 5,400) ke liye: [payment link]. Is baar autopay mandate ki jagah normal UPI, card ya netbanking choose kar sakte hain, toh OTP wala step nahi aayega. Agar account se amount deduct dikhe toh mujhe bata dijiye, turant check karenge.",
+          "placeholders": [
+            "fresh Razorpay link, same amount INR 5,400, one-time payment"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-04 12:30 IST",
+          "condition": "Still unpaid",
+          "sender": "Pooja",
+          "content_tags": [
+            "objection_answer",
+            "installment"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Rajesh ji, payment mein koi dikkat ho toh 2 minute call kar loon? Saath mein PEEL roadmap bhej rahi hoon jo aapne maanga tha. Kabir ne demo mein PEEL se 60 seconds bina ek bhi 'umm' ke bola tha, wahi structure Ms. Rhea weekend batch mein aage le jayengi.",
+          "placeholders": [
+            "PEEL roadmap PDF"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-06 18:00 IST",
+          "condition": "Still unpaid",
+          "sender": "Pooja",
+          "content_tags": [
+            "seat_hold",
+            "installment"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Rajesh ji, Kabir ki Sat-Sun 11 AM seat Ms. Rhea ke batch mein abhi bhi available hai. Aaj sirf Rs. 5,400, baaki Day 30 par. Exams ke time ka plan bhi call par samjha dungi. Abhi sahi time na ho toh 'later' reply kar dijiye, main pause kar dungi.",
+          "placeholders": [
+            "seat availability from roster API"
+          ]
+        }
+      ],
+      "stop_triggers": [
+        "Payment webhook = Paid",
+        "Parent replies",
+        "'later'/'stop'"
+      ],
+      "internal_alerts": [
+        "Ops: issue installment 2 (INR 5,400) as a separate Day-30 link since the mandate failed.",
+        "Verify the 'Exam Pause / Reschedule' feature exists before it's repeated in writing (FEATURE_CLAIM_UNVERIFIED)."
+      ]
+    },
+    {
+      "lead_id": "LEAD-806",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-03 18:30 IST",
+          "condition": "After academic team confirms bridge/micro-batch availability",
+          "sender": "Academic Counsellor with Coach Arvind",
+          "content_tags": [
+            "objection_answer",
+            "new_concession"
+          ],
+          "proposed_approval": "T2_TEAM_LEAD",
+          "message": "Hi Swathi, I'm [Academic Counsellor name], writing with Coach Arvind. First, sorry. Ananya should never have been in a room with 8-9 year olds, and you were right to push back.\n\nCoach Arvind remembers her giggling when her Knight captured the dragon's treasure. That's the Ananya we want to build on. Two calm options:\n1️⃣ A free 1-on-1 bridge session with Coach Arvind, at her pace\n2️⃣ Our Little Starters micro-batch: max 3 kids, all aged 5-6\n\nWhich would she be more comfortable with?",
+          "placeholders": [
+            "Academic Counsellor name"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-05 17:00 IST",
+          "condition": "No reply",
+          "sender": "Academic Counsellor",
+          "content_tags": [
+            "objection_answer"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Hi Swathi, Coach Arvind has a bridge slot on [slot 1] or [slot 2]: 30 minutes, just Ananya and him, no other kids. Reply with whichever suits and we'll lock it in.",
+          "placeholders": [
+            "slot 1",
+            "slot 2"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-08 11:00 IST",
+          "condition": "No reply",
+          "sender": "Academic Counsellor",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Last note from us, Swathi. Whenever Ananya feels ready, the bridge session is open, with no commitment. If you'd rather we didn't message, reply 'stop' and we'll respect that.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Parent replies (academic team takes over)",
+        "'stop' keyword",
+        "Payment = Paid"
+      ],
+      "internal_alerts": [
+        "Reassign LEAD-806 from Karan K*** to an academic counsellor.",
+        "Ops: fix demo batching rule; no 5-6 year olds in mixed 8-9 groups.",
+        "Karan: team-lead 1:1 within 48h (rubric gaming)."
+      ]
+    },
+    {
+      "lead_id": "LEAD-807",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-04 09:30 IST",
+          "condition": "Paired with P1 call task at 10:00 IST (SLA breached; snapshot past quiet hours)",
+          "sender": "Sneha",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Hi {{parent_first_name}}, Sneha from Bambinos. {{child_first_name}} scored 5/5 on Ms. Rhea's live Olympiad inference challenge, and asked when the regular batch starts! 📚 Could I call you this morning? I'd love to share where he's strong and the one area Ms. Rhea wants to build: structuring persuasive essays.",
+          "placeholders": [
+            "parent_first_name",
+            "child_first_name"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-04 17:30 IST",
+          "condition": "Call not connected",
+          "sender": "Sneha",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, missed you earlier. Would [slot 1] or [slot 2] work for a 10-minute chat about {{child_first_name}}'s Olympiad & Creative Writing plan?",
+          "placeholders": [
+            "slot 1",
+            "slot 2"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-06 18:00 IST",
+          "condition": "No reply",
+          "sender": "Sneha",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, last note from me. Ms. Rhea's feedback on {{child_first_name}}'s inference skills is ready whenever you'd like it. Just reply here. If now isn't the time, reply 'later' and I'll pause.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Call connected (regenerate from call audit)",
+        "Parent replies",
+        "'later'/'stop'"
+      ],
+      "internal_alerts": [
+        "P1 SLA BREACH: high-intent demo uncalled for 29.5h (Sneha V***)."
+      ]
+    },
+    {
+      "lead_id": "LEAD-808",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-04 10:00 AST",
+          "condition": "After reassignment from Amitabh (compliance review)",
+          "sender": "[Reassigned counsellor]",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, {{child_first_name}} loved the 'Mystery Box' speaking game in Ms. Simran's demo and asked for two extra rounds! 🎁 I'd love 5 minutes to hear what you'd like {{child_first_name}} to work on. When is a good time this week (Doha time)?",
+          "placeholders": [
+            "parent_first_name",
+            "child_first_name",
+            "reassigned counsellor"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-05 17:00 AST",
+          "condition": "No reply",
+          "sender": "[Reassigned counsellor]",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, would [slot 1] or [slot 2] (Doha time) suit for a quick chat about {{child_first_name}}'s storytelling and vocabulary plan?",
+          "placeholders": [
+            "slot 1",
+            "slot 2"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-08 11:00 AST",
+          "condition": "No reply",
+          "sender": "[Reassigned counsellor]",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, last note from me. Whenever you'd like to chat about {{child_first_name}}'s speaking journey, just reply here. Reply 'later' and I'll pause.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Parent replies",
+        "'later'/'stop'"
+      ],
+      "internal_alerts": [
+        "Class 108 (Young Communicators GCC Track) missing from pricing catalog; no price may be messaged until added.",
+        "Lazy disposition 'Busy / ok' with no follow-up date."
+      ]
+    },
+    {
+      "lead_id": "LEAD-809",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-03 16:00 GMT",
+          "condition": "After ops confirms GBP 210 price (GBP not in catalog)",
+          "sender": "Rohan",
+          "content_tags": [
+            "payment_retry"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, Rohan from Bambinos. Your bank declined the card security check (3-D Secure) on the Brainiac Maths payment, so it didn't go through. Here's a fresh link: [payment link]. Tip: approve the prompt in your banking app when it pops up, or try another card.",
+          "placeholders": [
+            "parent_first_name",
+            "fresh Stripe UK link (same amount)"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-04 12:30 GMT",
+          "condition": "Still unpaid",
+          "sender": "Rohan",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, still having trouble with the payment? Happy to stay on a 2-minute call while you try. {{child_first_name}} cracked the 4-disc Tower of Hanoi on his first go, so we'd love to get him started!",
+          "placeholders": [
+            "child_first_name"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-06 18:00 GMT",
+          "condition": "Still unpaid",
+          "sender": "Rohan",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, last note from me. If a card payment is tricky, we can also share a bank-transfer option. Just reply here, or reply 'later' and I'll pause.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Payment webhook = Paid",
+        "Parent replies",
+        "'later'/'stop'"
+      ],
+      "internal_alerts": [
+        "Catalog has no GBP price for class 205 (USD 250 listed); confirm GBP 210 before re-issuing link.",
+        "Bank-transfer option must be confirmed by finance before T3 is sent."
+      ]
+    },
+    {
+      "lead_id": "LEAD-810",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-04 10:00 IST",
+          "condition": "Auto (no flags on lead)",
+          "sender": "Karan",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, {{child_first_name}} mastered Ms. Simran's 'thumbs-up b & d bed' trick in just 5 minutes and read 4 sentences aloud! 📖 Could we do a quick 5-minute call about the long-vowel sounds Ms. Simran wants to work on next? What time suits you?",
+          "placeholders": [
+            "parent_first_name",
+            "child_first_name"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-05 17:30 IST",
+          "condition": "No reply",
+          "sender": "Karan",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, would [slot 1] or [slot 2] work for a quick chat about {{child_first_name}}'s reading plan?",
+          "placeholders": [
+            "slot 1",
+            "slot 2"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-08 11:00 IST",
+          "condition": "No reply",
+          "sender": "Karan",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, last note from me. Whenever you'd like to talk about {{child_first_name}}'s phonics, just reply. Reply 'later' and I'll pause.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Parent replies",
+        "'later'/'stop'"
+      ],
+      "internal_alerts": [
+        "next_followup_at 2026-11-01 is before last call (2026-11-02); reset.",
+        "Disposition note 'cb' carries no information; Karan under coaching review, team lead to spot-check this call."
+      ]
+    },
+    {
+      "lead_id": "LEAD-811",
+      "mode": "SUPPRESSED",
+      "language": "English",
+      "touches": [],
+      "stop_triggers": [
+        "Duplicate of LEAD-801"
+      ],
+      "internal_alerts": [
+        "Merge into LEAD-801 (same student_id 78001, same mobile). Keep owner Rohan; remove from Pooja's queue."
+      ]
+    },
+    {
+      "lead_id": "LEAD-812",
+      "mode": "SALES_SEQUENCE",
+      "language": "English",
+      "touches": [
+        {
+          "touch": 1,
+          "send_at_local": "2026-11-03 10:30 CST",
+          "condition": "Paired with P1 call task (SLA breached)",
+          "sender": "Sneha",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T1_COUNSELLOR",
+          "message": "Hi {{parent_first_name}}, Sneha from Bambinos. Acharya Aditi loved {{child_first_name}}'s question about how Karma Yoga applies to school grades and sports competitions. I hear you were clapping too! 😊 Could I call you today to share how the Teen Leadership track helps with pre-meet and test nerves?",
+          "placeholders": [
+            "parent_first_name",
+            "child_first_name"
+          ]
+        },
+        {
+          "touch": 2,
+          "send_at_local": "2026-11-03 17:30 CST",
+          "condition": "Call not connected",
+          "sender": "Sneha",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, would [slot 1] or [slot 2] (Central time) work for a 10-minute chat about {{child_first_name}}'s weekend batch options?",
+          "placeholders": [
+            "slot 1",
+            "slot 2"
+          ]
+        },
+        {
+          "touch": 3,
+          "send_at_local": "2026-11-05 18:00 CST",
+          "condition": "No reply",
+          "sender": "Sneha",
+          "content_tags": [
+            "recap"
+          ],
+          "proposed_approval": "T0_AUTO",
+          "message": "Hi {{parent_first_name}}, last note from me. Acharya Aditi's notes on {{child_first_name}} are ready whenever you'd like them. Reply here, or reply 'later' and I'll pause.",
+          "placeholders": []
+        }
+      ],
+      "stop_triggers": [
+        "Call connected",
+        "Parent replies",
+        "'later'/'stop'"
+      ],
+      "internal_alerts": [
+        "P1 SLA BREACH: high-intent demo uncalled (Sneha V***).",
+        "Student name contains Cyrillic homoglyphs ('Ме'). Normalise for dedup/WhatsApp matching."
+      ]
+    }
+  ]
+}

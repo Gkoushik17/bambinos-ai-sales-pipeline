@@ -1,0 +1,70 @@
+{
+  "call_id": "7002",
+  "lead_id": "LEAD-802",
+  "language": "English",
+  "audit": {
+    "dimensions": [
+      {"id": "D1", "score": 1, "evidence": [{"ts": "00:30", "quote": "Yes ma'am, all our classes are gamified and interactive!"}], "rationale": "Turns the parent's positive feedback into a product line; never mentions Zoya's bar-model breakthrough."},
+      {"id": "D2", "score": 1, "evidence": [{"ts": "01:28", "quote": "The moment the paper has a 4-line story problem"}], "rationale": "Parent volunteers the exact pain unprompted; rep never probes it and answers with a generic syllabus list."},
+      {"id": "D3", "score": 0, "evidence": [], "rationale": "Price dumped at 00:30 before any value, and when asked about the demo method the rep could not explain it."},
+      {"id": "D4", "score": 0, "evidence": [], "rationale": "Answers the local-tuition comparison with brand (Shark Tank) and a discount, not with the method that solved Zoya's word-problem gap."},
+      {"id": "D5", "score": 1, "evidence": [{"ts": "02:54", "quote": "please click and pay in 30 minutes"}], "rationale": "Pressure close; no agreed next step; parent ends the call."},
+      {"id": "D6", "score": 1, "evidence": [{"ts": "02:38", "quote": "AED 100 off doesn't answer my question."}], "rationale": "68% rep talk-time; repeatedly talks past the parent's actual question."},
+      {"id": "D7", "score": 1, "evidence": [{"ts": "00:30", "quote": "for the 12-month package of 96 classes it is AED 2,100"}], "rationale": "Price-dump policy breach (HIGH), false urgency (HIGH), package not in catalog (MEDIUM)."}
+    ],
+    "rubric_gaming_detected": false,
+    "gaming_evidence": []
+  },
+  "compliance_flags": [
+    {"code": "PRICE_DUMP_BEFORE_VALUE", "severity": "HIGH", "ts": "00:30", "quote": "So let me quickly tell you our fee structure for Dubai students.", "policy_ref": "Class 205: Do NOT dump price in the first 2 minutes without explaining how visual Bar-Model problem solving differs from local rote worksheet tuition.", "why": "Fee quoted 18 seconds into the conversation with zero value framing."},
+    {"code": "FALSE_URGENCY", "severity": "HIGH", "ts": "02:54", "quote": "the discount link expires in 30 minutes because batch seats fill very fast in Dubai", "policy_ref": "Code of conduct: no fabricated deadlines", "why": "Artificial 30-minute deadline used to pressure a parent who asked for information."},
+    {"code": "UNVERIFIED_PRICING", "severity": "MEDIUM", "ts": "00:30", "quote": "for the 12-month package of 96 classes it is AED 2,100", "policy_ref": "Catalog lists only the 48-session plan at AED 1,200", "why": "Quoted a package/price not present in the official catalog."},
+    {"code": "UNSUBSTANTIATED_CLAIM", "severity": "MEDIUM", "ts": "01:12", "quote": "we have top 1% certified teachers", "policy_ref": "Marketing claims policy", "why": "Unverifiable superlative used instead of answering the parent."}
+  ],
+  "coaching": {
+    "strengths": [
+      {"ts": "02:18", "text": "The AED 100 discount (8.3%) stayed within the 10% cap."}
+    ],
+    "fixes": [
+      {"moment_ts": "00:30", "what_happened": "Fee quoted before Amina had said what Zoya needs.", "why_it_cost_us": "With no value anchor, AED 1,200 was compared to AED 350 building tuition and lost.", "say_this_instead": "Before we talk plans, Mr. Vikram noticed something specific: Zoya is quick with straight sums but guesses the operation in word problems. Is that what you see in her school papers too?"},
+      {"moment_ts": "02:18", "what_happened": "Did not know what happened in the demo, then offered a discount.", "why_it_cost_us": "Amina's real question was 'what method did the teacher use?'. The discount signalled we had no answer.", "say_this_instead": "He used the Bar-Model method: Zoya drew the story as bars, then chose the operation. She solved two Grade-6 British-curriculum fraction word puzzles on her own and said 'Oh, that was so easy!'"}
+    ],
+    "micro_drill": "Before each call, read the demo evaluation for 60 seconds and write the magic moment on a sticky note. Role-play the 'local tutor is cheaper' objection 3 times, answering with method, never discount."
+  },
+  "crm": {
+    "decision_maker": "Mother (will consult local tutor)",
+    "parent_stated_pain": {"ts": "01:28", "quote": "The moment the paper has a 4-line story problem"},
+    "child_demo_highlight": "Used the visual 'Zing Bar-Model' method to solve two Grade-6 British-curriculum fraction word puzzles on her own and shouted 'Oh, that was so easy!'",
+    "child_learning_gap": "Fast with straight calculations, but panics on 4-line word problems and guesses + or × instead of breaking down the sentence.",
+    "primary_objection": {"code": "PRICE_VALUE", "status": "open", "ts": "00:50", "quote": "Why would I pay more than double for an online class?"},
+    "secondary_objections": [
+      {"code": "COMPETITOR_COMPARISON", "status": "open", "ts": "00:50", "quote": "a retired school teacher takes offline maths tuition 3 days a week for AED 350"}
+    ],
+    "objection_root_cause": "Value never shown: parent missed the demo's key moment and the rep could not explain the bar-model method.",
+    "current_blocker": "Doesn't see how method beats cheaper local tutor",
+    "schedule_agreed": null,
+    "price_quoted_by_rep": "AED 1,200 / 48 sessions (also an uncatalogued 12-month AED 2,100)",
+    "discount_offered": {"amount": 100, "currency": "AED"},
+    "intent_signals": {
+      "parent_stated_pain": {"value": true, "ts": "01:28", "quote": "she panics, guesses the wrong operation, or leaves it blank"},
+      "fee_accepted": {"value": false},
+      "price_objection_unresolved": {"value": true, "ts": "00:50", "quote": "Why would I pay more than double for an online class?"},
+      "schedule_confirmed": {"value": false},
+      "next_step_agreed_with_time": {"value": false},
+      "explicit_commitment_to_pay": {"value": false},
+      "decision_maker_absent": {"value": false},
+      "competitor_active": {"value": true, "ts": "03:08", "quote": "I'll discuss with her local tutor and think about it."},
+      "info_requested": {"value": true, "ts": "03:08", "quote": "Just send me the curriculum details on WhatsApp."},
+      "conditional_yes_with_available_fix": {"value": false},
+      "explicit_buying_question": {"value": false},
+      "parent_visible_enthusiasm": {"value": false},
+      "dnc_or_hostile": {"value": false}
+    },
+    "next_best_action": {"nba_code": "VALUE_REPITCH_METHOD", "owner": "team_lead", "action": "Team-lead-approved re-pitch: send the bar-model explanation of Zoya's demo, then offer a 15-min screen-share with Mr. Vikram. No discount, no deadline."},
+    "clean_note": "Value objection vs AED 350 local tutor. Real pain: British-curriculum word problems (guesses operation). Rep dumped price + 30-min discount pressure; parent asked for curriculum. Recoverable via bar-model proof.",
+    "rep_disposition_accurate": {"value": false, "reason": "'Price issue' masks a rep-caused value gap; parent is recoverable if shown the method."}
+  },
+  "confidence": 0.9,
+  "needs_human_review": false,
+  "review_reasons": []
+}

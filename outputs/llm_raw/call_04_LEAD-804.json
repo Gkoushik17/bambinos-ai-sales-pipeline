@@ -1,0 +1,63 @@
+{
+  "call_id": "7004",
+  "lead_id": "LEAD-804",
+  "language": "English",
+  "audit": {
+    "dimensions": [
+      {"id": "D1", "score": 4, "evidence": [{"ts": "00:50", "quote": "Meera's question—\"Why did Arjuna feel overwhelmed before the event even started?\"—was the most thoughtful question of the week"}], "rationale": "Specific praise grounded in Acharya Aditi's evaluation (curious conceptual thinker)."},
+      {"id": "D2", "score": 4, "evidence": [{"ts": "00:10", "quote": "How did Meera feel after the class ended?"}, {"ts": "00:22", "quote": "she rolls her eyes and thinks it's a parent lecture"}], "rationale": "Open question; parent articulates the core pain (values feel like lectures) and the rep anchors the pitch on it."},
+      {"id": "D3", "score": 4, "evidence": [{"ts": "00:50", "quote": "we teach the 8 Gunas—focus, resilience, gratitude, emotional regulation—through interactive stories and reflection, never dry rote memorization"}], "rationale": "Character-building framing exactly as the course policy requires (no dogma); price discussed only after the parent says she is sold."},
+      {"id": "D4", "score": 4, "evidence": [{"ts": "01:42", "quote": "Let me check Acharya Aditi's live US batch roster right now so we don't lose that teacher connection"}, {"ts": "02:00", "quote": "Acharya Aditi leads a dedicated US West Coast batch on Saturdays and Sundays at 9:30 AM PST"}], "rationale": "Solved the schedule conflict live while keeping the same teacher and an age/region-matched peer group."},
+      {"id": "D5", "score": 3, "evidence": [{"ts": "02:42", "quote": "I'll pay on the Stripe link as soon as my meeting finishes around 11:30 AM PST"}], "rationale": "Parent committed to a payment time; rep did not set a check-in or confirm the weekend batch would be mapped on the order."},
+      {"id": "D6", "score": 4, "evidence": [{"ts": "01:52", "quote": "If we can get Acharya Aditi on weekends, that would be ideal."}], "rationale": "44% rep talk-time; the parent leads."},
+      {"id": "D7", "score": 4, "evidence": [{"ts": "02:30", "quote": "Yes, USD 265 all-inclusive for 48 live classes"}], "rationale": "Price and refund policy match the catalog exactly."}
+    ],
+    "rubric_gaming_detected": false,
+    "gaming_evidence": []
+  },
+  "compliance_flags": [],
+  "coaching": {
+    "strengths": [
+      {"ts": "00:50", "text": "Quoted the educator's note verbatim; the parent felt the company 'saw' her child."},
+      {"ts": "01:42", "text": "Fixed the schedule objection live without losing the teacher bond."}
+    ],
+    "fixes": [
+      {"moment_ts": "02:58", "what_happened": "Payment came in 2 hours later but the CRM stage stayed 'Payment_Link_Sent'.", "why_it_cost_us": "Without the AI paid-gate, this paid parent would have received payment-reminder spam, and the order might map to the portal's default Tue/Thu batch.", "say_this_instead": "I'll confirm the Sat-Sun 9:30 AM PST batch on your enrollment as soon as the payment lands, and send the welcome note."}
+    ],
+    "micro_drill": "No drill needed. The pipeline now auto-updates stage on the payment webhook; Rohan to confirm batch mapping on paid orders."
+  },
+  "crm": {
+    "decision_maker": "Mother",
+    "parent_stated_pain": {"ts": "00:22", "quote": "she rolls her eyes and thinks it's a parent lecture"},
+    "child_demo_highlight": "Connected the Gita concept of 'Samatvam' (staying balanced under pressure) to her gymnastics balance-beam routine and wrote the shloka meaning in her notebook.",
+    "child_learning_gap": "Finds Sanskrit pronunciation tricky at first; loses interest if asked to memorize without context.",
+    "primary_objection": {"code": "SCHEDULE_CONFLICT", "status": "resolved", "ts": "01:18", "quote": "Meera has her competitive gymnastics team practice every Tuesday and Thursday from 4:30 PM to 6:30 PM PST"},
+    "secondary_objections": [],
+    "objection_root_cause": "Weekday batch clashes with gymnastics; resolved with a weekend batch with the same teacher.",
+    "current_blocker": "None: paid",
+    "schedule_agreed": "Sat-Sun 9:30-10:20 AM PST, Acharya Aditi, US West Coast batch",
+    "price_quoted_by_rep": "USD 265 / 48 sessions",
+    "discount_offered": null,
+    "intent_signals": {
+      "parent_stated_pain": {"value": true, "ts": "00:22", "quote": "she rolls her eyes and thinks it's a parent lecture"},
+      "fee_accepted": {"value": true, "ts": "02:20", "quote": "And the fee is USD 265 for the full 48 sessions, right?"},
+      "price_objection_unresolved": {"value": false},
+      "schedule_confirmed": {"value": true, "ts": "02:20", "quote": "Saturday and Sunday at 9:30 AM PST with Acharya Aditi is literally perfect!"},
+      "next_step_agreed_with_time": {"value": true, "ts": "02:42", "quote": "as soon as my meeting finishes around 11:30 AM PST"},
+      "explicit_commitment_to_pay": {"value": true, "ts": "01:18", "quote": "I am 100% sold on enrolling her in the 48-session track."},
+      "decision_maker_absent": {"value": false},
+      "competitor_active": {"value": false},
+      "info_requested": {"value": false},
+      "conditional_yes_with_available_fix": {"value": false},
+      "explicit_buying_question": {"value": false},
+      "parent_visible_enthusiasm": {"value": true, "ts": "00:22", "quote": "Oh, she loved it, Rohan!"},
+      "dnc_or_hostile": {"value": false}
+    },
+    "next_best_action": {"nba_code": "ONBOARDING_HANDOFF", "owner": "onboarding", "action": "Stop sales cadence; move to Enrolled_Paid; confirm order is mapped to Sat-Sun 9:30 AM PST batch (not portal default Tue/Thu); send welcome."},
+    "clean_note": "PAID USD 265 (Order 99404, 11:40 AM PST). Enrolled in Acharya Aditi's Sat-Sun 9:30 AM PST batch (gymnastics Tue/Thu). Ensure batch mapping; onboarding + referral ask after week 2 (Parent Club referral).",
+    "rep_disposition_accurate": {"value": false, "reason": "Stage left at 'Payment_Link_Sent' after payment cleared."}
+  },
+  "confidence": 0.95,
+  "needs_human_review": false,
+  "review_reasons": []
+}

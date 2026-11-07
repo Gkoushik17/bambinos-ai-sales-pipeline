@@ -1,0 +1,71 @@
+{
+  "call_id": "7005",
+  "lead_id": "LEAD-805",
+  "language": "Hinglish (Hindi + English)",
+  "audit": {
+    "dimensions": [
+      {"id": "D1", "score": 3, "evidence": [{"ts": "00:46", "quote": "Kabir ne \"Should homework be banned?\" topic par poore 60 seconds bina ek bhi \"umm\" bole speech di!"}], "rationale": "Specific, evaluation-matched praise, though it came after the opening question rather than leading the call."},
+      {"id": "D2", "score": 4, "evidence": [{"ts": "00:24", "quote": "woh dimaag mein Hindi se English translate karta hai aur phir \"umm... matlab...\" karke atak jaata hai"}, {"ts": "00:46", "quote": "Ms. Rhea ne bhi apni report mein yahi likha hai"}], "rationale": "Father describes the gap in his own words; rep confirms it with the educator's evaluation."},
+      {"id": "D3", "score": 4, "evidence": [{"ts": "00:46", "quote": "Aaj jab Ms. Rhea ne usko 'PEEL Method' sikhaya—Point, Evidence, Explain, Link"}], "rationale": "Ties the PEEL demo proof to the fluency gap before discussing fees."},
+      {"id": "D4", "score": 3, "evidence": [{"ts": "01:40", "quote": "stage fear tabhi jaata hai jab bacha 5-6 peers ke saamne bolna seekhe"}, {"ts": "02:20", "quote": "exam week mein hamare portal par 'Exam Pause / Reschedule' button hota hai"}], "rationale": "Handled the competitor and exam objections well. Offered a 10% discount AND an installment when the installment alone fit the cash-flow concern (margin leak)."},
+      {"id": "D5", "score": 4, "evidence": [{"ts": "03:28", "quote": "main raat ko dinner ke baad UPI se kar dunga"}], "rationale": "Parent committed to pay tonight at a specific time."},
+      {"id": "D6", "score": 4, "evidence": [{"ts": "02:10", "quote": "Yeh baat toh aapki sahi hai, akele teacher ke saamne bolne se stage fear nahi khulega."}], "rationale": "48% rep talk-time; responsive to each concern."},
+      {"id": "D7", "score": 3, "evidence": [{"ts": "03:00", "quote": "Hamari official policy ke andar main aapko 10% scholar discount de sakti hoon"}], "rationale": "Discount within cap; installment terms match policy. LOW flags: unverified competitor price claim, feature claim to verify, discount stacking."}
+    ],
+    "rubric_gaming_detected": false,
+    "gaming_evidence": []
+  },
+  "compliance_flags": [
+    {"code": "COMPETITOR_CLAIM_UNVERIFIED", "severity": "LOW", "ts": "01:40", "quote": "aur price bhi 1-on-1 se almost half padta hai", "policy_ref": "Marketing claims policy", "why": "Competitor price comparison not backed by an approved battlecard."},
+    {"code": "FEATURE_CLAIM_UNVERIFIED", "severity": "LOW", "ts": "02:20", "quote": "exam week mein hamare portal par 'Exam Pause / Reschedule' button hota hai", "policy_ref": "Product feature list (not in catalog file)", "why": "Verify that the Exam Pause feature exists before it is repeated in WhatsApp."},
+    {"code": "DISCOUNT_STACKING", "severity": "LOW", "ts": "03:00", "quote": "10% scholar discount de sakti hoon, jisse 48 classes ki fee Rs. 12,000 ki jagah Rs. 10,800 ho jayegi", "policy_ref": "Commercial guideline", "why": "Parent's concern was cash flow; the 50/50 installment alone solved it. Discount cost INR 1,200 margin."}
+  ],
+  "coaching": {
+    "strengths": [
+      {"ts": "01:40", "text": "Peer-audience argument against 1-on-1 competitors: the father repeated it back in his own words."},
+      {"ts": "02:20", "text": "Defused exam timing with a concrete reschedule mechanism."},
+      {"ts": "00:10", "text": "Matched the parent's language (Hinglish), which builds rapport."}
+    ],
+    "fixes": [
+      {"moment_ts": "03:00", "what_happened": "Gave the 10% discount and the installment together.", "why_it_cost_us": "INR 1,200 of margin given away when the installment alone fit the stated cash-flow issue.", "say_this_instead": "Sir, 12,000 ek saath dene ki zaroorat nahi hai: aaj 6,000 aur baaki 6,000 Day 30 par, zero extra cost. Kya yeh aapke budget mein comfortable rahega?"}
+    ],
+    "micro_drill": "Practise 'installment first, discount last': 3 role-plays where the parent says 'tight budget' and the rep closes without a discount."
+  },
+  "crm": {
+    "decision_maker": "Father (pays by UPI); mother prefers waiting until after exams",
+    "parent_stated_pain": {"ts": "00:24", "quote": "woh dimaag mein Hindi se English translate karta hai aur phir \"umm... matlab...\" karke atak jaata hai"},
+    "child_demo_highlight": "Practised the PEEL (Point-Evidence-Explain-Link) method on 'Should homework be banned?' and spoke for 60 seconds straight without a single filler word.",
+    "child_learning_gap": "Translates from Hindi to English in his head while speaking, causing 'umm... matlab...' pauses; lacks structured answers for oral exams.",
+    "primary_objection": {"code": "COMPETITOR_COMPARISON", "status": "resolved", "ts": "01:14", "quote": "pichle hafte humne PlanetSpark ka bhi demo liya tha, unka 1-on-1 class hai"},
+    "secondary_objections": [
+      {"code": "EXAM_TIMING", "status": "resolved", "ts": "01:14", "quote": "abhi 15 tarikh se Kabir ke school ke half-yearly exams shuru ho rahe hain"},
+      {"code": "PRICE_CASHFLOW", "status": "resolved", "ts": "02:42", "quote": "abhi ek saath Rs. 12,000 dena thoda tight padega"}
+    ],
+    "objection_root_cause": "All objections resolved on call; payment blocked by technical UPI mandate OTP timeout.",
+    "current_blocker": "UPI mandate OTP timeout on installment 1 (INR 5,400)",
+    "schedule_agreed": "Weekend batch Sat-Sun 11 AM IST with Ms. Rhea",
+    "price_quoted_by_rep": "INR 12,000 → INR 10,800 after 10% discount; 2 x INR 5,400",
+    "discount_offered": {"amount": 1200, "currency": "INR"},
+    "intent_signals": {
+      "parent_stated_pain": {"value": true, "ts": "00:24", "quote": "lekin jab bolne ki baari aati hai"},
+      "fee_accepted": {"value": true, "ts": "03:28", "quote": "Haan, yeh kaafi comfortable hai."},
+      "price_objection_unresolved": {"value": false},
+      "schedule_confirmed": {"value": true, "ts": "02:20", "quote": "agar hum abhi weekend batch (Sat-Sun 11 AM) se start karein"},
+      "next_step_agreed_with_time": {"value": true, "ts": "03:28", "quote": "main raat ko dinner ke baad UPI se kar dunga"},
+      "explicit_commitment_to_pay": {"value": true, "ts": "03:28", "quote": "main raat ko dinner ke baad UPI se kar dunga"},
+      "decision_maker_absent": {"value": false},
+      "competitor_active": {"value": false},
+      "info_requested": {"value": true, "ts": "03:28", "quote": "PEEL method ka roadmap bhej dijiye"},
+      "conditional_yes_with_available_fix": {"value": false},
+      "explicit_buying_question": {"value": false},
+      "parent_visible_enthusiasm": {"value": false},
+      "dnc_or_hostile": {"value": false}
+    },
+    "next_best_action": {"nba_code": "PAYMENT_RECOVERY", "owner": "counsellor", "action": "Auto-send fresh INR 5,400 link with one-time UPI/card/netbanking (no mandate); Pooja offers 2-min assisted call next day; Day-30 installment 2 via separate link."},
+    "clean_note": "All objections resolved (PlanetSpark 1-on-1 vs group, exams from 15th, cash flow → 10% + 50/50 installment). Committed to pay INR 5,400 tonight; UPI mandate OTP timeout at 8:45 PM. Weekend Sat-Sun 11AM with Ms. Rhea.",
+    "rep_disposition_accurate": {"value": false, "reason": "'Thinking' understates a committed parent who attempted payment."}
+  },
+  "confidence": 0.88,
+  "needs_human_review": false,
+  "review_reasons": []
+}

@@ -1,0 +1,51 @@
+{
+  "_note": "Prompt 01 run in demo-only mode (no call recording) for leads without transcripts. Evidence is quoted from 2_demo_class_evaluations.csv. Confidence <= 0.5.",
+  "leads": [
+    {
+      "lead_id": "LEAD-807",
+      "child_demo_highlight": "Scored 5/5 on the live Olympiad inference challenge and asked when the regular batch starts.",
+      "child_learning_gap": "Strong reader; needs structure for persuasive essays and Olympiad comprehension inference questions.",
+      "intent_signals": {
+        "explicit_buying_question": {"value": true, "quote": "asked when the regular batch starts!"}
+      },
+      "nba": {"nba_code": "CALL_NOW_SLA", "owner": "counsellor", "action": "Call within 1 hour; demo was 29.5h ago and uncalled."},
+      "confidence": 0.5
+    },
+    {
+      "lead_id": "LEAD-808",
+      "child_demo_highlight": "Loved the 'Mystery Box' impromptu speaking game and asked to do two extra rounds.",
+      "child_learning_gap": "Confident voice; needs vocabulary expansion and impromptu storytelling practice.",
+      "intent_signals": {},
+      "nba": {"nba_code": "REDISCOVERY_CALL", "owner": "counsellor", "action": "Re-discovery call (Doha time). Disposition 'Busy / ok' has no information. Confirm GCC Track pricing first (class 108 missing from catalog)."},
+      "confidence": 0.4
+    },
+    {
+      "lead_id": "LEAD-809",
+      "child_demo_highlight": "Solved the 'Tower of Hanoi' 4-disc logic challenge on his first attempt.",
+      "child_learning_gap": "Rushes multi-step logical reasoning, causing silly sign errors.",
+      "intent_signals": {
+        "explicit_commitment_to_pay": {"value": true, "quote": "mother tried paying on stripe link failed need to send new link", "source": "crm manual_rep_notes"}
+      },
+      "nba": {"nba_code": "PAYMENT_RECOVERY", "owner": "counsellor", "action": "Ops confirms GBP 210 price (GBP not in catalog), then fresh Stripe link + 3DS tip within London business hours."},
+      "confidence": 0.5
+    },
+    {
+      "lead_id": "LEAD-810",
+      "child_demo_highlight": "Mastered the 'thumbs-up b & d bed' trick in 5 minutes and read 4 sentences aloud.",
+      "child_learning_gap": "Confuses b/d letter reversal; struggles with long vowel sounds.",
+      "intent_signals": {},
+      "nba": {"nba_code": "REDISCOVERY_CALL", "owner": "counsellor", "action": "Re-discovery call; fix invalid follow-up date (2026-11-01 is before last call)."},
+      "confidence": 0.4
+    },
+    {
+      "lead_id": "LEAD-812",
+      "child_demo_highlight": "Asked how Karma Yoga applies to school grades and sports competitions, and her mother, sitting beside her, clapped.",
+      "child_learning_gap": "Gets anxious before competitive swim meets and school tests.",
+      "intent_signals": {
+        "parent_visible_enthusiasm": {"value": true, "quote": "Mother was sitting beside her and clapped!"}
+      },
+      "nba": {"nba_code": "CALL_NOW_SLA", "owner": "counsellor", "action": "Call in Texas (CST) daytime; recommend Teen Leadership Track, US weekend batch."},
+      "confidence": 0.5
+    }
+  ]
+}

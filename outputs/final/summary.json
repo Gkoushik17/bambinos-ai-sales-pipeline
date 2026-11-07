@@ -1,0 +1,351 @@
+{
+  "evidence_verified": "100/100",
+  "audits": {
+    "LEAD-801": {
+      "score": 98.8,
+      "grade": "A - Model call",
+      "rep": "Rohan S***"
+    },
+    "LEAD-802": {
+      "score": 15.0,
+      "grade": "D - At risk",
+      "rep": "Sneha V***"
+    },
+    "LEAD-803": {
+      "score": 0.0,
+      "grade": "AUTO-FAIL (Compliance)",
+      "rep": "Amitabh R***"
+    },
+    "LEAD-804": {
+      "score": 96.2,
+      "grade": "A - Model call",
+      "rep": "Rohan S***"
+    },
+    "LEAD-805": {
+      "score": 91.2,
+      "grade": "A - Model call",
+      "rep": "Pooja M***"
+    },
+    "LEAD-806": {
+      "score": 3.8,
+      "grade": "D - At risk",
+      "rep": "Karan K***"
+    }
+  },
+  "leads": {
+    "LEAD-801": {
+      "ai_crm_stage": "Follow_Up_Hot",
+      "priority": "P1",
+      "intent_label": "Hot",
+      "intent_score": 9,
+      "primary_objection": "SPOUSE_DECISION",
+      "payment_status": "Unpaid_Link_Opened_Twice",
+      "nba_code": "SEND_SPOUSE_SUMMARY",
+      "max_flag_severity": "MEDIUM"
+    },
+    "LEAD-802": {
+      "ai_crm_stage": "Follow_Up_Cold",
+      "priority": "P2",
+      "intent_label": "Cold",
+      "intent_score": 3,
+      "primary_objection": "PRICE_VALUE",
+      "payment_status": "Unpaid_Link_Not_Clicked",
+      "nba_code": "VALUE_REPITCH_METHOD",
+      "max_flag_severity": "HIGH"
+    },
+    "LEAD-803": {
+      "ai_crm_stage": "Compliance_Hold",
+      "priority": "P0",
+      "intent_label": "Cold",
+      "intent_score": 1,
+      "primary_objection": "TRUST_CREDIBILITY",
+      "payment_status": "Unpaid_Flagged_Discount_Anomaly",
+      "nba_code": "COMPLIANCE_HOLD",
+      "max_flag_severity": "CRITICAL"
+    },
+    "LEAD-804": {
+      "ai_crm_stage": "Enrolled_Paid",
+      "priority": "P0",
+      "intent_label": "Converted",
+      "intent_score": 10,
+      "primary_objection": "SCHEDULE_CONFLICT",
+      "payment_status": "Paid",
+      "nba_code": "ONBOARDING_HANDOFF",
+      "max_flag_severity": "CRITICAL"
+    },
+    "LEAD-805": {
+      "ai_crm_stage": "Payment_Failed_Recovery",
+      "priority": "P0",
+      "intent_label": "Hot",
+      "intent_score": 9,
+      "primary_objection": "COMPETITOR_COMPARISON",
+      "payment_status": "Payment_Failed",
+      "nba_code": "PAYMENT_RECOVERY",
+      "max_flag_severity": "HIGH"
+    },
+    "LEAD-806": {
+      "ai_crm_stage": "Follow_Up_Warm",
+      "priority": "P2",
+      "intent_label": "Warm",
+      "intent_score": 4,
+      "primary_objection": "CHILD_NOT_INTERESTED",
+      "payment_status": "No order",
+      "nba_code": "ACADEMIC_BATCH_FIX",
+      "max_flag_severity": "HIGH"
+    },
+    "LEAD-807": {
+      "ai_crm_stage": "Demo_Completed_Uncalled",
+      "priority": "P1",
+      "intent_label": "Warm (provisional)",
+      "intent_score": 6,
+      "primary_objection": "UNKNOWN",
+      "payment_status": "No order",
+      "nba_code": "CALL_NOW_SLA",
+      "max_flag_severity": "HIGH"
+    },
+    "LEAD-808": {
+      "ai_crm_stage": "Contacted_Discovery_Pending",
+      "priority": "P2",
+      "intent_label": "Cold (provisional)",
+      "intent_score": 3,
+      "primary_objection": "UNKNOWN",
+      "payment_status": "No order",
+      "nba_code": "REDISCOVERY_CALL",
+      "max_flag_severity": "MEDIUM"
+    },
+    "LEAD-809": {
+      "ai_crm_stage": "Payment_Failed_Recovery",
+      "priority": "P0",
+      "intent_label": "Hot (provisional)",
+      "intent_score": 8,
+      "primary_objection": "UNKNOWN",
+      "payment_status": "Payment_Failed",
+      "nba_code": "PAYMENT_RECOVERY",
+      "max_flag_severity": "HIGH"
+    },
+    "LEAD-810": {
+      "ai_crm_stage": "Contacted_Discovery_Pending",
+      "priority": "P2",
+      "intent_label": "Cold (provisional)",
+      "intent_score": 3,
+      "primary_objection": "UNKNOWN",
+      "payment_status": "No order",
+      "nba_code": "REDISCOVERY_CALL",
+      "max_flag_severity": "MEDIUM"
+    },
+    "LEAD-811": {
+      "ai_crm_stage": "Merged_Duplicate",
+      "priority": "P3",
+      "intent_label": "n/a",
+      "intent_score": "",
+      "primary_objection": "n/a",
+      "payment_status": "No order",
+      "nba_code": "MERGE_DUPLICATE",
+      "max_flag_severity": "HIGH"
+    },
+    "LEAD-812": {
+      "ai_crm_stage": "Demo_Completed_Uncalled",
+      "priority": "P1",
+      "intent_label": "Warm (provisional)",
+      "intent_score": 5,
+      "primary_objection": "UNKNOWN",
+      "payment_status": "No order",
+      "nba_code": "CALL_NOW_SLA",
+      "max_flag_severity": "HIGH"
+    }
+  },
+  "gate_status": {
+    "LEAD-801": [
+      [
+        1,
+        "T1_COUNSELLOR",
+        "READY"
+      ],
+      [
+        2,
+        "T2_TEAM_LEAD",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ],
+    "LEAD-802": [
+      [
+        1,
+        "T2_TEAM_LEAD",
+        "READY"
+      ],
+      [
+        2,
+        "T2_TEAM_LEAD",
+        "READY"
+      ],
+      [
+        3,
+        "T1_COUNSELLOR",
+        "READY"
+      ]
+    ],
+    "LEAD-803": [
+      [
+        1,
+        "T3_MANAGER",
+        "READY"
+      ]
+    ],
+    "LEAD-804": [
+      [
+        1,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        2,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ],
+    "LEAD-805": [
+      [
+        1,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        2,
+        "T1_COUNSELLOR",
+        "READY"
+      ],
+      [
+        3,
+        "T1_COUNSELLOR",
+        "READY"
+      ]
+    ],
+    "LEAD-806": [
+      [
+        1,
+        "T2_TEAM_LEAD",
+        "READY"
+      ],
+      [
+        2,
+        "T1_COUNSELLOR",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ],
+    "LEAD-807": [
+      [
+        1,
+        "T1_COUNSELLOR",
+        "READY"
+      ],
+      [
+        2,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ],
+    "LEAD-808": [
+      [
+        1,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        2,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ],
+    "LEAD-809": [
+      [
+        1,
+        "T0_AUTO",
+        "HELD_PENDING_OPS"
+      ],
+      [
+        2,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ],
+    "LEAD-810": [
+      [
+        1,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        2,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ],
+    "LEAD-811": [],
+    "LEAD-812": [
+      [
+        1,
+        "T1_COUNSELLOR",
+        "READY"
+      ],
+      [
+        2,
+        "T0_AUTO",
+        "READY"
+      ],
+      [
+        3,
+        "T0_AUTO",
+        "READY"
+      ]
+    ]
+  },
+  "system_flags": [
+    {
+      "code": "GATEWAY_THRESHOLD_MISMATCH",
+      "severity": "HIGH",
+      "why": "Payment gateway anomaly rule fires at >15% but policy cap is 10%; discounts of 10-15% currently pass silently. Fix gateway rule.",
+      "source": "rules_engine"
+    },
+    {
+      "code": "MIXED_TIMEZONES",
+      "severity": "LOW",
+      "why": "Timestamps are stored in local time without offsets (IST rows mixed with a PST paid_at). Store UTC + parent timezone.",
+      "source": "rules_engine"
+    }
+  ]
+}
